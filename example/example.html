@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    
+  </head>
+  <body>
+    <h1>Test AFRAME NPM</h1>
+    <a-scene>
+      <a-camera active="false" position="0 0 0"></a-camera>
+      <a-box
+        test-aframe-component
+        event-set__event0="_event: test-event-0; material.color: red"
+        event-set__event1="_event: test-event-1; material.color: blue"
+        event-set__event2="_event: test-event-2; material.color: green"
+        color="yellow"
+        position="0 0 -10"
+      ></a-box>
+    </a-scene>
+  </body>
+</html>
