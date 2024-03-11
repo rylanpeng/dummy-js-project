@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import fs from 'fs';
 
 export default defineConfig({
   mode: "production",
@@ -10,7 +11,7 @@ export default defineConfig({
     lib: {
       entry: "src/aframe.js", // Specify the entry file
       name: "FERNAR", // Specify the library name
-      fileName: "[name].prod", // Specify the output file name
+      fileName: () => "[name].prod.js", // Specify the output file name
       formats: ["iife"],
     },
     rollupOptions: {
