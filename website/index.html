@@ -1,21 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/test-npm-rylanpeng@1.0.1/dist/rylan-aframe-test.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fern-ar@0.0.21/dist/fernar-gesture.prod.js"></script>
   </head>
+  <script>
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   let coolbox = document.getElementById("coolbox");
+    //   coolbox.addEventListener("fernar-gesture-event-0", function (event) {
+    //     console.log(`get fernar-gesture-event-0!!!`);
+    //     coolbox.setAttribute("color", "blue");
+    //   });
+    //   coolbox.addEventListener("fernar-gesture-event-1", function (event) {
+    //     console.log(`get fernar-gesture-event-1!!!`);
+    //     coolbox.setAttribute("color", "yellow");
+    //   });
+    //   coolbox.addEventListener("fernar-gesture-event-2", function (event) {
+    //     console.log(`get fernar-gesture-event-2!!!`);
+    //     coolbox.setAttribute("color", "green");
+    //   });
+    // });
+  </script>
   <body>
-    <h1>Test AFRAME NPM</h1>
-    <a-scene>
+    <a-scene fernar-gesture="drawLandmarker:true">
       <a-camera active="false" position="0 0 0"></a-camera>
       <a-box
-        test-aframe-component
-        event-set__event0="_event: test-event-0; material.color: red"
-        event-set__event1="_event: test-event-1; material.color: blue"
-        event-set__event2="_event: test-event-2; material.color: green"
+        id="coolbox"
+        fernar-gesture-target="gesture: 0,1,2"
+        event-set__turnred="_event: fernar-gesture-event-0; material.color: red"
+        event-set__turnblue="_event: fernar-gesture-event-1; material.color: blue"
+        event-set__turngreen="_event: fernar-gesture-event-2; material.color: green"
         color="yellow"
         position="0 0 -10"
       ></a-box>
