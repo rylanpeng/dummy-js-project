@@ -5,25 +5,25 @@
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fern-ar@0.0.22/dist/fernar-gesture.prod.js"></script>
   </head>
-  <script>
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   let coolbox = document.getElementById("coolbox");
-    //   coolbox.addEventListener("fernar-gesture-event-0", function (event) {
-    //     console.log(`get fernar-gesture-event-0!!!`);
-    //     coolbox.setAttribute("color", "blue");
-    //   });
-    //   coolbox.addEventListener("fernar-gesture-event-1", function (event) {
-    //     console.log(`get fernar-gesture-event-1!!!`);
-    //     coolbox.setAttribute("color", "yellow");
-    //   });
-    //   coolbox.addEventListener("fernar-gesture-event-2", function (event) {
-    //     console.log(`get fernar-gesture-event-2!!!`);
-    //     coolbox.setAttribute("color", "green");
-    //   });
-    // });
-  </script>
   <body>
-    <a-scene fernar-gesture="drawLandmarker:true">
+    <script>
+      async function initializeScene() {
+        const jsonModelPath = "../model.json";
+        const binModelPath = "../model.weights.bin";
+
+        // Fetching JSON model file
+        const jsonResponse = await fetch(jsonModelPath);
+        const jsonModelFile = await jsonResponse.text();
+
+        // Fetching binary model file
+        const binResponse = await fetch(binModelPath);
+        const binModelFile = new Uint8Array(await binResponse.arrayBuffer());
+
+        await FERNAR.updateModel(jsonModelFile, binModelFile, binModelPath);
+      }
+      initializeScene();
+    </script>
+    <a-scene fernar-gesture>
       <a-camera active="false" position="0 0 0"></a-camera>
       <a-box
         id="coolbox"
